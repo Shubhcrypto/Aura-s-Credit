@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Client Portal — AURA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="portal">
+
+<header class="portal-header">
+  <a href="index.html" class="logo">AURA<span>.</span></a>
+  <div class="portal-user" id="portalUser" hidden>
+    <span id="userEmail"></span>
+    <button class="btn btn-outline" id="logoutBtn" type="button">Log out</button>
+  </div>
+</header>
+
+<!-- AUTH -->
+<main class="auth-wrap" id="authView">
+  <div class="auth-card">
+    <p class="eyebrow">Client Portal</p>
+    <h1 class="auth-title" id="authTitle">Welcome back.</h1>
+    <form id="authForm" novalidate>
+      <div class="field"><label for="aEmail">Email</label><input type="email" id="aEmail" autocomplete="email" required></div>
+      <div class="field"><label for="aPass">Password</label><input type="password" id="aPass" autocomplete="current-password" minlength="8" required></div>
+      <button type="submit" class="btn btn-gold form-submit" id="authSubmit">Log in</button>
+      <p class="form-success" id="authMsg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="auth-switch"><span id="switchText">First time here?</span> <button type="button" id="switchBtn" class="link-btn">Register</button></p>
+  </div>
+</main>
+
+<!-- ENQUIRIES -->
+<main class="dash-wrap" id="dashView" hidden>
+  <div class="dash-head">
+    <div>
+      <p class="eyebrow">Enquiries</p>
+      <h1 class="auth-title">Received enquiries</h1>
+    </div>
+    <div class="dash-tools">
+      <input type="search" id="searchBox" placeholder="Search name, company, city…" aria-label="Search enquiries">
+      <button class="btn btn-outline" id="refreshBtn" type="button">Refresh</button>
+      <button class="btn btn-gold" id="csvBtn" type="button">Export CSV</button>
+    </div>
+  </div>
+  <p class="form-success" id="dashMsg" role="status" aria-live="polite"></p>
+  <div class="table-wrap">
+    <table class="enq-table">
+      <thead>
+        <tr><th>Date</th><th>Name</th><th>Company</th><th>Mobile</th><th>Email</th><th>City</th><th>Product</th><th>Qty</th><th>Project</th><th>Message</th></tr>
+      </thead>
+      <tbody id="enqBody"></tbody>
+    </table>
+  </div>
+  <p class="count" id="enqCount"></p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
+</body>
+</html>
